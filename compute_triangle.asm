@@ -8,6 +8,8 @@ extern strlen
 
 extern scanf
 
+extern isfloat
+
 global average
 
 name_string_size equ 48
@@ -31,7 +33,8 @@ result_tic_time db "The final time on the system clock is %lf tics.", 0ah, 0
 good_day db "Have a good day %s", 0ah, 0
 
 number_input db "%lf", 0
-
+buf_side1 db "%lf", 0
+buf_side2 db "%lf", 0
 
 segment .bss
 
@@ -115,25 +118,39 @@ mov rdi, prompt_first_length
 call printf
 
 ;Input first length
-mav rax, 0
+mov rax, 0
 mov rdi, number_input
-push qword -9
-push qword -9
 mov rsi, rsp
 call scanf
-movsd xmm8, [rsp]
-pop r9
-pop r8
+cmp rax, 0
+je invalid
+
+
+;Output prompt for second length
+mov rax, 0
+mov rdi, prompt_second_length
+call printf
+
+;Input Second Lenght
+mov rdx, 0 
+mov rdi, number_input
+mov rsi, rsp
+call scanf
+cmp rax, 0 
+je invalid
+
+; Validate side 
 
 
 
 
+mov rax, 0
+mov rdi, invalid
+call printf
 
+mov rax, -1
 
-
-
-
- ;Restore the original values to the GPRs
+return:
   popf          
   pop     r15
   pop     r14
@@ -149,5 +166,12 @@ pop r8
   pop     rcx
   pop     rbx
   pop     rbp
+    ret
 
-ret
+invalid_input:
+mov rax, 0
+mov rdi, invalid
+call printf
+
+movsd xmmo, [num]
+jmp return 
