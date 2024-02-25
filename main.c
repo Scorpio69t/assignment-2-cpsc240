@@ -17,7 +17,6 @@
 //  Compile: gcc  -m64  -Wall -no-pie -o main.o -std=c2x -c main.c
 //  Link: gcc -m64 -no-pie -o a.out compute_triangle.o isfloat.o main.o -lm -std=c2x -Wall -z noexecstack
 
-
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -27,10 +26,10 @@ extern double compute_triangle();
 
 int main(int argc, const char* argv[]) 
 {
-    printf("Welcome to Amazing Triangles programmed by Thomas Nguyen on February 24, 2024\n");
+    printf("Welcome to Amazing Triangles programmed by Thomas Nguyen on February 24, 2024\n\n");
     double result = 0.0;
     result = compute_triangle();  
-    printf("The driver received this number %0.2lf and will simply keep it.\n", result);
-    printf("An integer zero will now be sent to the operating system. Bye\n\n");
+    printf("The driver received this number %0.2lf and will simply keep it.\n\n", result);
+    printf("An integer zero will now be sent to the operating system. Bye\n");
     return 0;
 }
