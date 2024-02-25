@@ -1,9 +1,29 @@
+//Author: Thomas Nguyen
+//Author email: thomasn1003@csu.fullerton.edu
+//Program name: main
+//Programming languages: One module in C, two in X86, and one in bash.
+//Date program began: 2024-Feb
+//Date of last update: 2024-Feb-24
+//Files in this program: main.c, compute_triangle.asm, isfloat.asm, r.sh
+
+
+//Purpose of this program:
+// This program calculates the 3rd length of a triangle given 2 sides and an angle
+
+//This file
+//  File name: main.c
+//  Language: C language, 202x standardization where x will be a decimal digit.
+//  Max page width: 124 columns
+//  Compile: gcc  -m64  -Wall -no-pie -o main.o -std=c2x -c main.c
+//  Link: gcc -m64 -no-pie -o a.out compute_triangle.o isfloat.o main.o -lm -std=c2x -Wall -z noexecstack
+
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <math.h>
+#include <math.h> 
 
-//extern double compute_triangle();
+extern double compute_triangle();
 
 int main(int argc, const char* argv[]) 
 {
